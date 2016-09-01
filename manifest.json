@@ -1,0 +1,36 @@
+{
+	"manifest_version": 2,
+	"name": "UnblockEm",
+	"version": "1.0",
+
+	"description": "Close paywalls, sign up modals, and adblocker stops",
+
+	"background": {
+		"scripts": ["background.js"],
+		"persistent": false
+	},
+
+	"page_action": {
+	// 	"default_icon": "images/icon64.png", // as 38px
+		"default_title": "UnblockEm",
+		"default_popup": "tooltip.html"
+	},
+
+	"permissions": [
+		"declarativeContent",
+		"activeTab",
+		"tabs",
+		"cookies",
+		"http://*/*",
+		"https://*/*",
+		"contentSettings"
+	],
+
+	"content_scripts": [
+		{
+			"matches":["*://*.quora.com/*"],
+			"js": ["tooltip.js"],
+			"run_at": "document_end"
+		}
+	]
+}
