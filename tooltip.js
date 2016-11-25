@@ -1,15 +1,27 @@
 function quoraCleaner() {
-	var wrapper = document.getElementsByClassName("vertical_alignment_wrapper")[0];
-	wrapper.parentNode.removeChild(wrapper);
-	var body = document.getElementsByTagName("BODY")[0];
-	body.className = body.className.replace( /(?:|\s)gating-new_signup-on signup_wall_prevent_scroll(?!\S)/g , '' )
+	var wrppr = document.getElementsByClassName("vertical_alignment_wrapper")[0];
+	wrppr.parentNode.removeChild(wrppr);
+	var bdy = document.getElementsByTagName("BODY")[0];
+	bdy.className = bdy.className.replace( /(?:|\s)gating-new_signup-on signup_wall_prevent_scroll(?!\S)/g , '' )
 	console.log('quoraCleaner ran');
 } quoraCleaner();
+
+function biCleaner() {
+	var ifrm = document.getElementsByClassName("tp-modal")[0];
+	ifrm.parentNode.removeChild(ifrm);
+	var bckdrp = document.getElementsByClassName("tp-backdrop")[0];
+	bckdrp.parentNode.removeChild(bckdrp);
+	var bdy = document.getElementsByTagName("BODY")[0];
+	bdy.setAttribute("style", "overflow: scroll");
+	var rcc = document.getElementsByClassName("recommendation");
+	rcc.parentNode.removeChild(rcc);
+	console.log('biCleaner ran');
+} biCleaner();
 
 function removeCookies() {
 	var rmvCksButton = document.getElementById('rmvCks');
 	rmvCksButton.addEventListener('click', function() {
-		console.log('remove cookies button clicked');
+		console.log('remove cookies button clicked (1 of 2)');
 	}, false);
 } removeCookies();
 
@@ -28,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	var rmvCksButton = document.getElementById('rmvCks');
 	rmvCksButton.addEventListener('click', function() {
-		console.log('remove cookies button clicked');
+		console.log('remove cookies button clicked (2 of 2)');
 	}, false);
 
 }, false);

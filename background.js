@@ -3,12 +3,17 @@ chrome.runtime.onInstalled.addListener(function() {
 	// replace all rules
 	chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
 		// new rule
+		/* one rule per action */ 
 		chrome.declarativeContent.onPageChanged.addRules([
 			{
-				// quora
 				conditions: [
+				// quora
 					new chrome.declarativeContent.PageStateMatcher({
 						pageUrl: { urlContains: 'quora.com'},
+					}),
+				// business insider
+					new chrome.declarativeContent.PageStateMatcher({
+						pageUrl: { urlContains: 'businessinsider.com'},
 					})
 				],
 				actions: [ new chrome.declarativeContent.ShowPageAction() ]
