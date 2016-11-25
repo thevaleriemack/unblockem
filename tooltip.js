@@ -1,46 +1,50 @@
 function quoraCleaner() {
 	var wrppr = document.getElementsByClassName("vertical_alignment_wrapper")[0];
-	wrppr.parentNode.removeChild(wrppr);
 	var bdy = document.getElementsByTagName("BODY")[0];
-	bdy.className = bdy.className.replace( /(?:|\s)gating-new_signup-on signup_wall_prevent_scroll(?!\S)/g , '' )
-	console.log('quoraCleaner ran');
-} quoraCleaner();
+	if (wrppr == bdy == null) {
+		wrppr.parentNode.removeChild(wrppr);
+		bdy.className = bdy.className.replace( /(?:|\s)gating-new_signup-on signup_wall_prevent_scroll(?!\S)/g , '' )
+		console.log('quoraCleaner ran');
+	} else {
+		console.log('could not find elements');
+	}
+}
 
 function biCleaner() {
 	var ifrm = document.getElementsByClassName("tp-modal")[0];
-	ifrm.parentNode.removeChild(ifrm);
 	var bckdrp = document.getElementsByClassName("tp-backdrop")[0];
-	bckdrp.parentNode.removeChild(bckdrp);
 	var bdy = document.getElementsByTagName("BODY")[0];
-	bdy.setAttribute("style", "overflow: scroll");
 	var rcc = document.getElementsByClassName("recommendation");
-	rcc.parentNode.removeChild(rcc);
-	console.log('biCleaner ran');
-} biCleaner();
+	if (ifrm == bckdrp == bdy == rcc == null) {
+		console.log('could not find elements');
+	} else {
+		ifrm.parentNode.removeChild(ifrm);
+		bckdrp.parentNode.removeChild(bckdrp);
+		bdy.setAttribute("style", "overflow: scroll");
+		rcc.parentNode.removeChild(rcc);
+		console.log('biCleaner ran');
+	}
+}
 
-function removeCookies() {
-	var rmvCksButton = document.getElementById('rmvCks');
-	rmvCksButton.addEventListener('click', function() {
-		console.log('remove cookies button clicked (1 of 2)');
-	}, false);
-} removeCookies();
-
-document.addEventListener('DOMContentLoaded', function() {
-	console.log("content loaded");
-
-	// get current url
-	chrome.tabs.query({'active':true, 'lastFocusedWindow':true}, function (tabs){
-		var url = tabs[0].url
-	})
-
-	var crrntUrlButton = document.getElementById('crrntUrl');
-	crrntUrlButton.addEventListener('click', function() {
-		console.log('you are at '+url);
-	}, false);
-
-	var rmvCksButton = document.getElementById('rmvCks');
-	rmvCksButton.addEventListener('click', function() {
-		console.log('remove cookies button clicked (2 of 2)');
-	}, false);
-
-}, false);
+function unblockEm() {
+	var url = window.location.href;
+	var timesRun = 0;
+	// runs every 3 seconds, 10 times total
+	var interval = setInterval(function(){
+		timesRun+= 1;
+		if (timesRun > 10){
+			console.log("cleaner stopped after 10 runs for diligence");
+			clearInterval(interval);
+			return;
+		}
+		if (url.includes('quora.com')) {
+			console.log("found quora");
+			quoraCleaner();
+		} else if (url.includes('businessinsider.com')) {
+			console.log("found businessinsider");
+			biCleaner();
+		} else {
+			console.log("found nothing :(");
+		}
+	}, 3000);
+} unblockEm();
