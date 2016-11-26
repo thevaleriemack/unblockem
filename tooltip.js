@@ -31,7 +31,6 @@ function biCleaner() {
 function addLoader(){
 	var loader = document.createElement("canvas");
 	loader.id = "_loader";
-	loader.innerHTML="UnblockEm";
 	document.body.appendChild(loader);
 	var st = loader.style;
 	st.position = "absolute";
