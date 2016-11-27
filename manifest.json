@@ -28,7 +28,12 @@
 
 	"content_scripts": [
 		{
-			"matches":["*://*.quora.com/*", "*://*.businessinsider.com/*"],
+			"matches": [
+				"*://*.quora.com/*",
+				"*://*.businessinsider.com/*",
+				"*://*.ibtimes.com/*",
+				"*://*.ibtimes.co.uk/*"
+			],
 			"js": ["tooltip.js"],
 			"run_at": "document_end"
 		}

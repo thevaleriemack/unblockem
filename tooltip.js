@@ -27,6 +27,19 @@ function biCleaner() {
 	}
 }
 
+function ibCleaner() {
+	var artclList = document.getElementsByClassName("v_text");
+	if (artclList == null) {
+		console.log('could not find elements');
+	} else {
+		for (var i = artclList.length - 1; i >= 0; i--) {
+			artclList[i].style.color = "black";
+			artclList[i].style.textShadow = null;
+		}
+		console.log('ibCleaner ran');
+	}
+}
+
 // loader
 function addLoader(){
 	var loader = document.createElement("canvas");
@@ -91,6 +104,9 @@ function unblockEm() {
 		} else if (url.includes('businessinsider.com')) {
 			console.log("found businessinsider");
 			biCleaner();
+		} else if (url.includes('ibtimes.co')) {
+			console.log("found ibtimes");
+			ibCleaner();
 		} else {
 			console.log("found nothing :(");
 		}
