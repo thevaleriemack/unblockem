@@ -11,6 +11,10 @@ chrome.runtime.onInstalled.addListener(function() {
 					new chrome.declarativeContent.PageStateMatcher({
 						pageUrl: { urlContains: 'quora.com'},
 					}),
+				// owler
+					new chrome.declarativeContent.PageStateMatcher({
+						pageUrl: { urlContains: 'owler.com'},
+					}),
 				// business insider
 					new chrome.declarativeContent.PageStateMatcher({
 						pageUrl: { urlContains: 'businessinsider.com'},

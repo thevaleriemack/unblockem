@@ -32,7 +32,8 @@
 				"*://*.quora.com/*",
 				"*://*.businessinsider.com/*",
 				"*://*.ibtimes.com/*",
-				"*://*.ibtimes.co.uk/*"
+				"*://*.ibtimes.co.uk/*",
+				"*://*.owler.com/*"
 			],
 			"js": ["tooltip.js"],
 			"run_at": "document_end"

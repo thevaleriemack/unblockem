@@ -40,6 +40,16 @@ function ibCleaner() {
 	}
 }
 
+function owlerCleaner() {
+	var popUp = document.getElementById("pageless-onboarding-popup");
+	if (popUp == null) {
+		console.log('could not find elements');
+	} else {
+		popUp.parentNode.removeChild(popUp);
+		console.log('owlerCleaner ran');
+	}
+}
+
 // loader
 function addLoader(){
 	var loader = document.createElement("canvas");
@@ -107,6 +117,9 @@ function unblockEm() {
 		} else if (url.includes('ibtimes.co')) {
 			console.log("found ibtimes");
 			ibCleaner();
+		} else if (url.includes('owler.com')) {
+			console.log("found owler");
+			owlerCleaner();
 		} else {
 			console.log("found nothing :(");
 		}
